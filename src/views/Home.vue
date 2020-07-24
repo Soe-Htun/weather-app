@@ -58,10 +58,12 @@ export default {
         .then(res =>{
           return res.json();
         }).then(this.setResults)
+        
       }
     },
     setResults(results){
       this.weather = results;
+      
     }
   },
   created(){
@@ -95,7 +97,7 @@ main{
   height: 100%;
   padding:  20px 2%;
   width: 100%;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
 }
 .search{
   width: 100%;
