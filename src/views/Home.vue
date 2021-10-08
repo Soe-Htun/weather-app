@@ -12,7 +12,7 @@
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
           <div class="location">{{weather.name}} , {{weather.sys.country}}</div>
-          <div class="date">{{ dateBuilder() }}</div>
+          <div class="date">{{ dateBuilder }}</div>
         </div>
         <div class="weather-box">
           <div class="temp">{{Math.round(weather.main.temp)}}°C</div>
@@ -38,7 +38,7 @@ export default {
       weather:{}
     }
   },
-  methods:{
+  computed: {
     dateBuilder(){
       let d=new Date();
       let months=["January", "February", "March",  "April", "May", "June", "July", "August", 
@@ -51,20 +51,23 @@ export default {
       let dateFormat=day +" "+ date+" "+ month+ " " + year;
       return dateFormat;
     },
+  },
+  created(){
+    window.addEventListener("keydown", this.fetchWeather)
+  },
+  methods:{
     fetchWeather(e){
       if(e.keyCode === 13){
         fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
         .then(res =>{
           return res.json();
         }).then(this.setResults)
+        console.log("Res", this.res)
       }
     },
     setResults(results){
       this.weather = results;
     }
-  },
-  created(){
-    window.addEventListener("keydown", this.fetchWeather)
   }
 }
 </script>
@@ -144,7 +147,7 @@ main{
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
   margin: 30px 0px;
-  box-shadow: 4px 6px rgba(0, 0, 0, 0.35);;
+  box-shadow: 4px 6px rgba(0, 0, 0, 0.35);
 }
 .weather-box .weather{
   color: #fff;
