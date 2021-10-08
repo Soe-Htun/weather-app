@@ -6,8 +6,7 @@
          placeholder="Search.."
          v-model="query"
          @keypress="fetchWeather()"
-          />
-         
+          />       
       </div>
 
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
@@ -116,6 +115,7 @@ main{
   background: none;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0px 16px 0px 16px;
+  text-indent: 10px
 }
 .weather-wrap{
   position: relative;
@@ -153,4 +153,7 @@ main{
   font-style: italic;
   text-shadow: 4px 6px rgba(0, 0, 0, 0.35);
 }
+::placeholder {
+    text-indent : 10px
+  }
 </style>
