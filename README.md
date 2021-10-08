@@ -24,3 +24,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ![plot](./assets/weather.jpg)
+
+https://github.com/Soe-Htun/weather-app/issues/15#issue-1020793384
